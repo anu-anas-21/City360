@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">city360</string>
+    <string name="welcome">Welcome</string>
+    <string name="log">Please Enter Your Information</string>
+    <string name="ap">City360</string>
+    <string name="mail">Email</string>
+    <string name="pass">Password</string>
+    <string name="Req">Required*</string>
+    <string name="ph">Phone</string>
+    <string name="user">...Continue As...</string>
+    <string name="login">Existing user? Log in</string>
+    <string name="signup">New user? Sign Up</string>
+    <string-array name="type">
+        <item>Tourist</item>
+        <item>Resident</item>
+    </string-array>
+</resources>
