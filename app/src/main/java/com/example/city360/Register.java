@@ -10,7 +10,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
  public class Register extends AppCompatActivity {
+     TextInputLayout mail,pass,ph;
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapter;
     Button bt;
@@ -26,12 +29,20 @@ import android.widget.TextView;
         adapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,usertype);
         autoCompleteTextView.setAdapter(adapter);
         txt=findViewById(R.id.logintxt);
+        mail=findViewById(R.id.mail);
+        pass=findViewById(R.id.password);
+        ph=findViewById(R.id.phone);
         bt=findViewById(R.id.btn);
+        String regmail=mail.getEditText().getText().toString().trim();
+
+        String regphone=ph.getEditText().getText().toString().trim();
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Register.this, login.class);
                 startActivity(intent);
+                //finish();
+                
             }
         });
         txt.setOnClickListener(new View.OnClickListener() {
@@ -42,4 +53,18 @@ import android.widget.TextView;
             }
         });
     }
+    private boolean isValidPass()
+    {
+        String regpassword=pass.getEditText().getText().toString().trim();
+        if (regpassword.length() < 8|| regpassword.length() > 16)
+        {
+            pass.setError("Must be 8 to 16 Characters");
+            return false;
+        }
+        else {
+            pass.setError(null);
+            return true;
+        }
+    }
+
 }
