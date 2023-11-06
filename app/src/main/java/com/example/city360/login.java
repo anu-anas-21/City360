@@ -33,15 +33,26 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
                 String username=logMail.getEditText().getText().toString().trim();
                 String password=logPass.getEditText().getText().toString().trim();
-                Boolean result=myDb.checkMailPassword(username,password);
-                if (result==true)
+                if (username.equals(""))
                 {
-                    Intent intent=new Intent(login.this,Home.class);
-                    startActivity(intent);
+                    logMail.setError("Filed Cannot be Empty");
+                }
+                else if (password.equals(""))
+                {
+                    logPass.setError("Filed Cannot be Empty");
                 }
                 else
                 {
-                    Toast.makeText(login.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                    Boolean result=myDb.checkMailPassword(username,password);
+                    if (result==true)
+                    {
+                        Intent intent=new Intent(login.this,Home.class);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(login.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

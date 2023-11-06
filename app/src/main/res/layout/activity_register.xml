@@ -68,7 +68,6 @@
                 android:hint="@string/mail"
                 app:startIconDrawable="@drawable/baseline_email"
                 android:textColorHint="@color/primary"
-                app:helperText="@string/Req"
                 app:helperTextTextColor="@color/Red"
                 app:counterEnabled="true"
                 app:counterMaxLength="40"
@@ -87,7 +86,6 @@
                 android:hint="@string/pass"
                 app:startIconDrawable="@drawable/baseline_lock_24"
                 android:textColorHint="@color/primary"
-                app:helperText="@string/Req"
                 app:helperTextTextColor="@color/Red"
                 app:counterEnabled="true"
                 app:counterMaxLength="16"
@@ -107,7 +105,6 @@
                 android:hint="@string/ph"
                 app:startIconDrawable="@drawable/baseline_phone_24"
                 android:textColorHint="@color/primary"
-                app:helperText="@string/Req"
                 app:helperTextTextColor="@color/Red"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
@@ -125,7 +122,8 @@
                 android:layout_height="match_parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:startIconDrawable="@drawable/baseline_person_24"
-                app:startIconTint="@color/primary">
+                app:startIconTint="@color/primary"
+                app:helperTextTextColor="@color/Red">
                 <AutoCompleteTextView
                     android:id="@+id/menu"
                     android:layout_width="match_parent"

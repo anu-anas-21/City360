@@ -48,25 +48,44 @@ import java.lang.reflect.Type;
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Boolean mailResult=myDb.checkMail(regMail);
-                if (mailResult == false)
+                if (regMail.equals(""))
                 {
-                    Boolean regResult=myDb.insertData(regMail,regPassword,regPhone,regType);
-                    if (regResult == true)
-                    {
-                        Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(Register.this, login.class);
-                        startActivity(intent);
-                    }
-                    else
-                    {
-                        Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-                    }
-
+                    mail.setError("Filed Cannot be Empty");
+                }
+                else if (regPassword.equals(""))
+                {
+                    pass.setError("Filed Cannot be Empty");
+                }
+                else if (regPhone.equals(""))
+                {
+                    ph.setError("Filed Cannot be Empty");
+                }
+                else if (regType.equals(""))
+                {
+                    type.setError("Filed Cannot be Empty");
                 }
                 else
                 {
-                    Toast.makeText(Register.this, "User Already Exists.\n Please Sign in", Toast.LENGTH_SHORT).show();
+                    Boolean mailResult=myDb.checkMail(regMail);
+                    if (mailResult == false)
+                    {
+                        Boolean regResult=myDb.insertData(regMail,regPassword,regPhone,regType);
+                        if (regResult == true)
+                        {
+                            Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(Register.this, login.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    else
+                    {
+                        Toast.makeText(Register.this, "User Already Exists.\n Please Sign in", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
