@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.lang.reflect.Type;
+
  public class Register extends AppCompatActivity {
      database myDb;
-     TextInputLayout mail,pass,ph;
+     TextInputLayout mail,pass,ph,type;
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapter;
     Button bt;
@@ -35,19 +37,21 @@ import com.google.android.material.textfield.TextInputLayout;
         mail=findViewById(R.id.mail);
         pass=findViewById(R.id.password);
         ph=findViewById(R.id.phone);
+        type=findViewById(R.id.userType);
         bt=findViewById(R.id.btn);
         myDb=new database(this);
 
         String regMail=mail.getEditText().getText().toString().trim();
         String regPhone=ph.getEditText().getText().toString().trim();
         String regPassword=pass.getEditText().getText().toString().trim();
+        String regType= type.getEditText().getText().toString().trim();
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Boolean mailResult=myDb.checkMail(regMail);
                 if (mailResult == false)
                 {
-                    Boolean regResult=myDb.insertData(regMail,regPassword,regPhone);
+                    Boolean regResult=myDb.insertData(regMail,regPassword,regPhone,regType);
                     if (regResult == true)
                     {
                         Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();

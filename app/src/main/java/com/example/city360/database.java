@@ -28,13 +28,14 @@ public class database extends SQLiteOpenHelper
         String drop="drop table if exists Collections";
         MyDatabase.execSQL(drop);
     }
-    public boolean insertData(String email ,String password,String phone)
+    public boolean insertData(String email ,String password,String phone,String type)
     {
         SQLiteDatabase MyDatabase=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
         cv.put("email",email);
         cv.put("password",password);
         cv.put("phone",phone);
+        cv.put("type",type);
         long result=MyDatabase.insert("Collections",null,cv);
         if (result==-1)
         {
