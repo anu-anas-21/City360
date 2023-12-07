@@ -10,6 +10,7 @@
     <string name="user">...Continue As...</string>
     <string name="login">Existing user? Log in</string>
     <string name="signup">New user? Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
     <string-array name="type">
         <item>Tourist</item>
         <item>Resident</item>

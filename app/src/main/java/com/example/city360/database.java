@@ -3,12 +3,8 @@ package com.example.city360;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class database extends SQLiteOpenHelper
 {

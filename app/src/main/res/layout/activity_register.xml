@@ -102,38 +102,26 @@
                 style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/ph"
-                app:startIconDrawable="@drawable/baseline_phone_24"
+                android:hint="@string/confirm_password"
+                app:startIconDrawable="@drawable/baseline_lock_24"
                 android:textColorHint="@color/primary"
                 app:helperTextTextColor="@color/Red"
                 app:counterEnabled="true"
-                app:counterMaxLength="15"
+                app:counterMaxLength="16"
+                app:endIconMode="password_toggle"
                 app:startIconTint="@color/primary">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phone"
+                    android:id="@+id/confirmpassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:maxLength="15"
-                    android:inputType="phone" />
+                    android:maxLength="16"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/userType"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:startIconDrawable="@drawable/baseline_person_24"
-                app:startIconTint="@color/primary"
-                app:helperTextTextColor="@color/Red">
-                <AutoCompleteTextView
-                    android:id="@+id/menu"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/user"
-                    android:textColor="@color/primary"
-                    android:textSize="15sp"
-                    android:layout_gravity="center"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
             <Button
                 android:id="@+id/btn"
                 android:layout_width="wrap_content"
