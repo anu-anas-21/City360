@@ -11,6 +11,11 @@
     <string name="login">Existing user? Log in</string>
     <string name="signup">New user? Sign Up</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="location_details">Locations</string>
+    <string name="hospitals">Hospitals</string>
+    <string name="schools">Schools</string>
+    <string name="logout">Logout</string>
+    <string name="Hotels">Hotels</string>
     <string-array name="type">
         <item>Tourist</item>
         <item>Resident</item>
