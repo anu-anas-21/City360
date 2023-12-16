@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,11 @@ public class login extends AppCompatActivity {
 
     TextInputEditText etmail,etpass;
 
+    boolean validate;
+
     private FirebaseAuth mAuth;
+
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,8 @@ public class login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         etmail=findViewById(R.id.maillogin);
         etpass=findViewById(R.id.passwordlogin);
+        progressBar=findViewById(R.id.progressbar);
+        Handler handler=new Handler();
 
         suptxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,22 +58,43 @@ public class login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mail=String.valueOf(etmail.toString());
-                String pass=String.valueOf(etpass.toString());
-                mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent sup=new Intent(login.this, Home.class);
-                            startActivity(sup);
-                            finish();
-                        } else {
-                            Toast.makeText(login.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                String pass=etpass.getText().toString();
+                String mail=etmail.getText().toString();
+                validate=isValidate();
+                if (validate) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Intent sup=new Intent(login.this, Home.class);
+                                startActivity(sup);
+                                finish();
+                            } else {
+                                Toast.makeText(login.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    },3000);
+                }
             }
         });
+    }
+    private boolean isValidate() {
+        if (etmail.length()==0) {
+            etmail.setError("Required");
+            return false;
+        }
+        if (etpass.length()==0) {
+            etpass.setError("Required");
+            return false;
+        }
+        return true;
     }
 }

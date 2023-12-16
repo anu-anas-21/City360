@@ -16,6 +16,7 @@
     <string name="schools">Schools</string>
     <string name="logout">Logout</string>
     <string name="Hotels">Hotels</string>
+    <string name="required">Required</string>
     <string-array name="type">
         <item>Tourist</item>
         <item>Resident</item>
